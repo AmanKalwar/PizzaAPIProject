@@ -1,6 +1,6 @@
 using System;
 
-namespace PizzaAPI
+namespace PizzaApi
 {
     public class WeatherForecast
     {

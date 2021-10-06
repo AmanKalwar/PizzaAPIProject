@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PizzaUsers.Models;
 using PizzaUsers.services;
 using System;
@@ -15,10 +16,12 @@ namespace PizzaUsers.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserServices _services;
+        private readonly PizzaService _pservice;
 
-        public UserController(UserServices userServices)
+        public UserController(UserServices userServices,PizzaService pizzaService)
         {
             _services = userServices;
+            _pservice = pizzaService;
         }
         // GET: api/<UserController>
         [HttpGet]
@@ -54,18 +57,9 @@ namespace PizzaUsers.Controllers
             return BadRequest("Not able to register");
 
         }
+        
 
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

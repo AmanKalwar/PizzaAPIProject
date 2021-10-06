@@ -39,6 +39,7 @@ namespace PizzaUsers
             });
             services.AddDbContext<UserContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:conCompany"]));
             services.AddScoped<UserServices>();
+            services.AddScoped<PizzaService>();
             services.AddScoped<ITokenServices, TokenServices>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>

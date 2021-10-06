@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:17175",
+      "applicationUrl": "http://localhost:18353",
       "sslPort": 0
     }
   },
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "PizzaAPI": {
+    "PizzaApi": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

@@ -35,7 +35,7 @@ namespace PizzaAPI.Services
 
         public ICollection<Pizza> GetAll()
         {
-            IList<Pizza> employees = _context.Pizzas.ToList();
+            ICollection<Pizza> employees = _context.Pizzas.ToList();
             if (employees.Count > 0)
                 return employees;
             else

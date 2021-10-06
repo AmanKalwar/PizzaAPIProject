@@ -35,7 +35,7 @@ namespace PizzaAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PizzaAPI", Version = "v1" });
             });
 
-            services.AddDbContext<PizzaContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:conPizza"]));
+            services.AddDbContext<PizzaContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:conCompany"]));
             services.AddScoped<PizzaService>();
         }
 

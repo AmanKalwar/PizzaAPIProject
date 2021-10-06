@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PizzaAPI.Models;
-using PizzaAPI.Services;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using PizzaUsers.Models;
+using PizzaUsers.services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,35 +9,37 @@ using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace PizzaAPI.Controllers
+namespace PizzaUsers.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PizzaController : ControllerBase
     {
-        private readonly PizzaService _pizzaService;
+        private readonly PizzaService _pservice;
 
         public PizzaController(PizzaService pizzaService)
         {
-            _pizzaService = pizzaService;
+            _pservice = pizzaService;
         }
         // GET: api/<PizzaController>
+        [Route("GetPizza")]
         [HttpGet]
-        public  ICollection<Pizza> Get()
+       
+        public ICollection<PizzaDTO> GetPizza()
         {
-            if (_pizzaService.GetAll() != null) {
-                  
-                return _pizzaService.GetAll();
+            if (_pservice.GetAll() != null)
+            {
+                return _pservice.GetAll();
             }
-             
             return null;
         }
 
         // GET api/<PizzaController>/5
         [HttpGet("{id}")]
-        public Pizza Get(int id)
+        public string Get(int id)
         {
-            return _pizzaService.Get(id);
+            return "value";
         }
 
         // POST api/<PizzaController>

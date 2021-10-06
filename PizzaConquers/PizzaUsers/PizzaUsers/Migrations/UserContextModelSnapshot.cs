@@ -21,7 +21,12 @@ namespace PizzaUsers.Migrations
 
             modelBuilder.Entity("PizzaUsers.Models.User", b =>
                 {
-                    b.Property<string>("UserId")
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address")
@@ -39,7 +44,7 @@ namespace PizzaUsers.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.HasKey("UserId", "Email");
 
                     b.ToTable("users");
                 });

@@ -27,7 +27,8 @@ namespace PizzaUsers.services
                 using var hmac = new HMACSHA512();
                 var user = new User()
                 {
-                    UserId = userDTO.UserId,
+                    
+                    Email=userDTO.Email,
                     Name=userDTO.Name,
                     Address=userDTO.Address,
                     Phone=userDTO.Phone,
@@ -52,7 +53,7 @@ namespace PizzaUsers.services
         {
             try
             {
-                var myUser = _context.users.SingleOrDefault(u => u.UserId == userDTO.UserId);
+                var myUser = _context.users.SingleOrDefault(u => u.Email == userDTO.Email);
                 if (myUser != null)
                 {
                     using var hmac = new HMACSHA512(myUser.PasswordSalt);

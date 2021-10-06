@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PizzaUsers.Migrations
 {
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,9 @@ namespace PizzaUsers.Migrations
                 name: "users",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -20,7 +22,7 @@ namespace PizzaUsers.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_users", x => x.UserId);
+                    table.PrimaryKey("PK_users", x => new { x.UserId, x.Email });
                 });
         }
 

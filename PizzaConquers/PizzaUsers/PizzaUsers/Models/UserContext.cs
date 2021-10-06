@@ -13,5 +13,10 @@ namespace PizzaUsers.Models
 
         }
         public DbSet<User> users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+           modelBuilder.Entity<User>().HasKey(e=>new { e.UserId,e.Email}
+           );
+        }
     }
 }
