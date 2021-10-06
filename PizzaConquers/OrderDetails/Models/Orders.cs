@@ -17,7 +17,7 @@ namespace OrderDetails.Models
         public string PizzaName { get; set; }
         public double Price { get; set; }
         public int Qty { get; set; }
-        public string Status { get; set; }
+       
       
     }
 }
