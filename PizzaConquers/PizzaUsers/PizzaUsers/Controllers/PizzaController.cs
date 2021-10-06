@@ -37,23 +37,15 @@ namespace PizzaUsers.Controllers
 
         // GET api/<PizzaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public PizzaDTO Get(int id)
         {
-            return "value";
+            PizzaDTO pizza = _pservice.Get(id);
+            if (pizza!= null)
+            {
+                return pizza;
+            }
+            return pizza;
         }
-
-        // POST api/<PizzaController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<PizzaController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         // DELETE api/<PizzaController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
