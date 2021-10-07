@@ -38,36 +38,6 @@ namespace OrderDetails.Migrations
 
                     b.ToTable("OrderDetails");
                 });
-
-            modelBuilder.Entity("OrderDetails.Models.Orders", b =>
-                {
-                    b.Property<int>("OrderID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PizzaID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PizzaName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.HasKey("OrderID");
-
-                    b.ToTable("Orders");
-                });
 #pragma warning restore 612, 618
         }
     }

@@ -20,21 +20,7 @@ namespace OrderDetails.Controllers
         {
             _service = service;
         }
-        // GET: api/<OrderDetailsController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/<OrderDetailsController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<OrderDetailsController>
         [HttpPost]
         public async Task<ActionResult<OrderDetail>> Post([FromBody] OrderDetail order)
         {
@@ -44,19 +30,6 @@ namespace OrderDetails.Controllers
                 return orders;
             }
             return BadRequest("Couldnt Add");
-        }
-
-
-        // PUT api/<OrderDetailsController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<OrderDetailsController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

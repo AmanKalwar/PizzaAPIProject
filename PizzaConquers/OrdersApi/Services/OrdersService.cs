@@ -1,17 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OrderDetails.Models;
+using OrdersApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OrderDetails.Services
+namespace OrdersApi.Services
 {
-    public class OrderService
+    public class OrdersService
     {
         private readonly OrdersContext _context;
 
-        public OrderService(OrdersContext context)
+        public OrdersService(OrdersContext context)
         {
             _context = context;
         }
@@ -23,11 +23,11 @@ namespace OrderDetails.Services
                 _context.SaveChanges();
                 return _context.Orders.Where(e => e.CustomerID == orders.CustomerID).ToList()[_context.Orders.Where(e => e.CustomerID == orders.CustomerID).ToList().Count - 1];
             }
-            catch(DbUpdateConcurrencyException Dbce)
+            catch (DbUpdateConcurrencyException Dbce)
             {
                 Console.WriteLine(Dbce.Message);
             }
-            catch(DbUpdateException Dbe)
+            catch (DbUpdateException Dbe)
             {
                 Console.WriteLine(Dbe.Message);
             }

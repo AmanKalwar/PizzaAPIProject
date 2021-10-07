@@ -35,7 +35,7 @@ namespace OrderDetails
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OrderDetails", Version = "v1" });
             });
             services.AddDbContext<OrdersContext>(options=>options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-            services.AddScoped<OrderService>();
+          
             services.AddScoped<OrderDetailService>();
         }
 

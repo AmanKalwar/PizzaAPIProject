@@ -2,17 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderDetails.Models;
+using OrdersApi.Models;
 
-namespace OrderDetails.Migrations
+namespace OrdersApi.Migrations
 {
     [DbContext(typeof(OrdersContext))]
-    [Migration("20211006074131_Orders")]
-    partial class Orders
+    partial class OrdersContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,28 +18,7 @@ namespace OrderDetails.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("OrderDetails.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToppingsID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ToppingsName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("OrderDetails.Models.Orders", b =>
+            modelBuilder.Entity("OrdersApi.Models.Orders", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()
@@ -65,9 +42,6 @@ namespace OrderDetails.Migrations
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrderID");
 

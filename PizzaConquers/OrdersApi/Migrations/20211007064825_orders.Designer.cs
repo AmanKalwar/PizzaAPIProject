@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderDetails.Models;
+using OrdersApi.Models;
 
-namespace OrderDetails.Migrations
+namespace OrdersApi.Migrations
 {
     [DbContext(typeof(OrdersContext))]
-    [Migration("20211006084709_Orders")]
-    partial class Orders
+    [Migration("20211007064825_orders")]
+    partial class orders
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,28 +20,7 @@ namespace OrderDetails.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("OrderDetails.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToppingsID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ToppingsName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("OrderDetails");
-                });
-
-            modelBuilder.Entity("OrderDetails.Models.Orders", b =>
+            modelBuilder.Entity("OrdersApi.Models.Orders", b =>
                 {
                     b.Property<int>("OrderID")
                         .ValueGeneratedOnAdd()

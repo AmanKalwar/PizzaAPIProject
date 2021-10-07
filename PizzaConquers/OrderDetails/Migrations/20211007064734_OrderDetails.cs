@@ -2,7 +2,7 @@
 
 namespace OrderDetails.Migrations
 {
-    public partial class Orders : Migration
+    public partial class OrderDetails : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -20,33 +20,12 @@ namespace OrderDetails.Migrations
                 {
                     table.PrimaryKey("PK_OrderDetails", x => x.ID);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Orders",
-                columns: table => new
-                {
-                    OrderID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PizzaID = table.Column<int>(type: "int", nullable: false),
-                    CustomerID = table.Column<int>(type: "int", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PizzaName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Qty = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Orders", x => x.OrderID);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "OrderDetails");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
         }
     }
 }
