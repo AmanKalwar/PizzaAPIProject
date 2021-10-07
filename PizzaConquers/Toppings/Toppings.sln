@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toppings", "Toppings.csproj", "{C564A384-10EC-484F-ABE3-923E44CE429C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toppings", "Toppings\Toppings.csproj", "{585E4864-94E3-498F-94B2-BC2AB29C7848}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C564A384-10EC-484F-ABE3-923E44CE429C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C564A384-10EC-484F-ABE3-923E44CE429C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C564A384-10EC-484F-ABE3-923E44CE429C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C564A384-10EC-484F-ABE3-923E44CE429C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585E4864-94E3-498F-94B2-BC2AB29C7848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585E4864-94E3-498F-94B2-BC2AB29C7848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585E4864-94E3-498F-94B2-BC2AB29C7848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585E4864-94E3-498F-94B2-BC2AB29C7848}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F473C835-57FD-493E-8D1A-7D68BC841E41}
+		SolutionGuid = {0864A02B-DD18-4CBD-8922-1044240B6C2B}
 	EndGlobalSection
 EndGlobal

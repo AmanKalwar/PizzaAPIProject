@@ -40,10 +40,10 @@ namespace PizzaUsers.services
 
                 using (var client = new HttpClient())
                 {
-                    PizzaDTO pizza = new PizzaDTO() { ID = id };
+                    //PizzaDTO pizza = new PizzaDTO() { ID = id };
 
-                    var value = new List<KeyValuePair<int, int>>();
-                    value.Add(new KeyValuePair<int, int>(id, id));
+                    //var value = new List<KeyValuePair<int, int>>();
+                    //value.Add(new KeyValuePair<int, int>(id, id));
                     client.BaseAddress = new Uri("http://localhost:18353/api/");
 
                     var getdata = client.GetFromJsonAsync<PizzaDTO>("Pizza/" + id);
