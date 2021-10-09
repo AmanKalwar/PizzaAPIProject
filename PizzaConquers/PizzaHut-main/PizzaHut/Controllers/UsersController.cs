@@ -83,7 +83,7 @@ namespace PizzaHut.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Register(UsersDTO user)
+        public IActionResult Register(Register user)
         {
             if (string.IsNullOrEmpty(user.Email) || string.IsNullOrWhiteSpace(user.Email) || !ValidateEmailAddress(user.Email))
             {
@@ -93,6 +93,12 @@ namespace PizzaHut.Controllers
             else if (string.IsNullOrEmpty(user.Password) || string.IsNullOrWhiteSpace(user.Password) || !ValidatePassword(user.Password))
             {
                 ViewBag.ErrorPassword = "Invalid Password";
+                return View();
+            }
+            else if (string.IsNullOrEmpty(user.Password) || string.IsNullOrWhiteSpace(user.Password) || user.Password!=user.Re_Password)
+            {
+                ViewBag.ErrorRe_Password = "Password Miss-match";
+                
                 return View();
             }
             else if (string.IsNullOrEmpty(user.Name) || string.IsNullOrWhiteSpace(user.Name))
@@ -111,15 +117,17 @@ namespace PizzaHut.Controllers
             }
             else
             {
-                UsersDTO users = _repo.Validate2(user);
-                if (users != null)
+                UsersDTO users = new UsersDTO() { Email = user.Email, Password = user.Password, Address = user.Address, Phone = user.Phone,Name=user.Name};
+                UsersDTO users1= _repo.Validate2(users);
+                
+                if (users1 != null)
                 {
                     ViewBag.Error = "User Already Exists";
                     return View();
                 }
                 else
                 {
-                    UsersDTO userss = _repo.Add(user);
+                    UsersDTO userss = _repo.Add(users);
                     if (userss != null)
                     {
                         TempData["Token"] = userss.jwtToken;

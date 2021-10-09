@@ -11,8 +11,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-     
+
         body {
             background-image: url('/images/cart1.jpg');
             background-size: cover;
@@ -28,7 +32,7 @@
             margin-left: 50px;
         }
 
-        #btn1,#btn2 {
+        #btn1, #btn2 {
             background-color: transparent;
             color: aqua;
             font-weight: bold;
@@ -42,7 +46,8 @@
                 box-shadow: 0 0 20px 0 #1efffe;
                 background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
             }
-             #btn2:hover {
+
+            #btn2:hover {
                 color: white;
                 box-shadow: 0 0 20px 0 #1efffe;
                 background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
@@ -63,10 +68,61 @@
 
     @if (TempData["Added"] != null)
     {
-        <script>
-            alert("Ädded To Cart Successfully");
-        </script>
-    }
+<script>
+    //var modal = document.getElementById("myModal");
+
+    //// Get the button that opens the modal
+    //var btn = document.getElementById("myBtn");
+
+    //// Get the <span> element that closes the modal
+    //var span = document.getElementsByClassName("close")[0];
+
+    //// When the user clicks the button, open the modal 
+    //btn.onclick = function () {
+    //    modal.style.display = "block";
+    //}
+
+    //// When the user clicks on <span> (x), close the modal
+    //span.onclick = function () {
+    //    modal.style.display = "none";
+    //}
+
+    //// When the user clicks anywhere outside of the modal, close it
+    //window.onclick = function (event) {
+    //    if (event.target == modal) {
+    //        modal.style.display = "none";
+    //    }
+    //}
+    alert("Ädded To Cart Successfully");
+    $(document).ready(function () {
+        $("#myModel").toggle();
+    });
+  
+</script>
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+
+                             Modal Header 
+                            <div class="modal-header">
+                                <h4 class="modal-title">Modal Heading</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                             Modal body 
+                            <div class="modal-body">
+                                Modal body..
+                            </div>
+
+                             Modal footer 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
 
 
     <br>
@@ -90,43 +146,42 @@
 
             @foreach (var item in DictPizza.Keys)
             {
-                <tr>
-                    <td>
-                        @DictPizza[item].Pizza.ID
-                    </td>
-                    <td>
-                        @DictPizza[item].Pizza.Name
-                    </td>
-                    @if (DictToppings != null)
-                    {
-                        if (DictToppings.ContainsKey(item))
-                        {
-                            <td>@DictToppings[item].ID</td>
-                            <td>@DictToppings[item].Name</td>
-                            <td>@((@Convert.ToInt32(DictPizza[item].Pizza.Price)+@Convert.ToInt32(DictToppings[item].Price))*Convert.ToInt32(DictPizza[item].Qty))</td>
-                            //@(total+=(@Convert.ToInt32(DictPizza[item].Pizza.Price) + @Convert.ToInt32(DictToppings[item].Price)) * Convert.ToInt32(DictPizza[item].Qty));
-                        }
-                        else
-                        {
-                            <td colspan="2"> - </td>
-                            <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
-                            //@(total += (@Convert.ToInt32(DictPizza[item].Pizza.Price) * @Convert.ToInt32(DictPizza[item].Qty));
-                        }
+<tr>
+    <td>
+        @DictPizza[item].Pizza.ID
+    </td>
+    <td>
+        @DictPizza[item].Pizza.Name
+    </td>
+    @if (DictToppings != null)
+    {
+        if (DictToppings.ContainsKey(item))
+        {
+<td>@DictToppings[item].ID</td>
+                        <td>@DictToppings[item].Name</td>
+                                                <td>@((@Convert.ToInt32(DictPizza[item].Pizza.Price)+@Convert.ToInt32(DictToppings[item].Price))*Convert.ToInt32(DictPizza[item].Qty))</td>
+ //@(total+=(@Convert.ToInt32(DictPizza[item].Pizza.Price) + @Convert.ToInt32(DictToppings[item].Price)) * Convert.ToInt32(DictPizza[item].Qty));
+                                            }
+                                            else
+                                            {
+                        <td colspan="3"> - </td>
+                                                <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
+ //@(total += (@Convert.ToInt32(DictPizza[item].Pizza.Price) * @Convert.ToInt32(DictPizza[item].Qty));
+                                            }
 
-                    }
-                    else
-                    {
-                        <td colspan="2"> - </td>
-                        <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
-                    }
-                    <td>@DictPizza[item].Qty</td>
-                    <td><a href="@Url.Action("Delete","Toppings",new {ID=@item})"><button class="btn" id="btn1" style="width:100px">Delete</button></a></td>
-                    <td><a href="@Url.Action("Add","Toppings",new {ID=@item})"><button class="btn" id="btn2"style="width:100px">Add</button></a></td>
-                </tr>
-
-            }
+                                        }
+                                        else
+                                        {
+                        <td colspan="3"> - </td>
+                                            <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
+}
+    <td>@DictPizza[item].Qty</td>
+    <td><a href="@Url.Action("Delete","Toppings",new {ID=@item})"><button class="btn" id="btn1" style="width:50px">-</button></a></td>
+    <td><a href="@Url.Action("Add","Toppings",new {ID=@item})"><button class="btn" id="btn2" style="width:50px">+</button></a></td>
+</tr>
+       }
             <tr>
-                <td colspan="2">Grand Total</td>
+                <td colspan="3">Grand Total</td>
                 <td colspan="5" style="text-align:right">
                     @ViewData["Price"]
                 </td>

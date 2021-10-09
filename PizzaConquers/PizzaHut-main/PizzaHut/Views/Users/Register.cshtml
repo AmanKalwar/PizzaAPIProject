@@ -1,4 +1,4 @@
-﻿@model PizzaHut.Models.UsersDTO
+﻿@model PizzaHut.Models.Register
 
 @{
     Layout = null;
@@ -38,10 +38,10 @@
 
         #form2 {
             background: rgba(0,0,0,0.7);
-            height:600px;
+            height:700px;
         }
         #form1{
-            height:600px;
+            height:700px;
         }
         .row {
             justify-content: center;
@@ -123,7 +123,7 @@
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
                             <label asp-for="Email" class="control-label">EmailID</label>
-                            <input asp-for="Email" class="form-control" placeholder="Enter EmailID" type="email"/>
+                            <input asp-for="Email" class="form-control" placeholder="Enter EmailID" type="email" />
                             <p>
                                 @if (ViewBag.ErrorUser != null)
                                 {@ViewBag.ErrorUser}
@@ -131,7 +131,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Name" class="control-label">Name</label>
-                            <input asp-for="Name" class="form-control" placeholder="Enter Name" type="text"/>
+                            <input asp-for="Name" class="form-control" placeholder="Enter Name" type="text" />
                             <p>
                                 @if (ViewBag.ErrorName != null)
                                 {@ViewBag.ErrorName}
@@ -139,15 +139,23 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Password" class="control-label">Password</label>
-                            <input asp-for="Password" class="form-control" placeholder="Enter Password" type="password"/>
+                            <input asp-for="Password" class="form-control" placeholder="Enter Password" type="password" />
                             <p>
                                 @if (ViewBag.ErrorPassword != null)
                                 {@ViewBag.ErrorPassword}
                             </p>
                         </div>
                         <div class="form-group">
+                            <label asp-for="Re_Password" class="control-label">Confirm Password</label>
+                            <input asp-for="Re_Password" class="form-control" placeholder="Enter Password" type="password" />
+                            <p>
+                                @if (ViewBag.ErrorRe_Password != null)
+                                {@ViewBag.ErrorRe_Password}
+                            </p>
+                        </div>
+                        <div class="form-group">
                             <label asp-for="Phone" class="control-label">Phone Number</label>
-                            <input asp-for="Phone" class="form-control" placeholder="Enter Phone Number" type="number"/>
+                            <input asp-for="Phone" class="form-control" placeholder="Enter Phone Number" type="number" />
                             <p>
                                 @if (ViewBag.ErrorPhone != null)
                                 {@ViewBag.ErrorPhone}
@@ -155,7 +163,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Address" class="control-label">Address</label>
-                            <input asp-for="Address" class="form-control" placeholder="Enter Address" type="text"/>
+                            <input asp-for="Address" class="form-control" placeholder="Enter Address" type="text" />
                             <p>
                                 @if (ViewBag.ErrorAddress != null)
                                 {@ViewBag.ErrorAddress}
@@ -166,8 +174,7 @@
                             {@ViewBag.Error}
                         else if (ViewBag.Success != null)
                         {
-                            <script>alert("Registration Successfull");</script>
-                        }
+                    <script>alert("Registration Successfull");</script>}
                         </p>
                         <div class="form-group">
                             <button type="submit" value="Create" class="btn">Register</button>
