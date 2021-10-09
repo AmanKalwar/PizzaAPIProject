@@ -57,9 +57,21 @@ namespace PizzaUsers.Controllers
             return BadRequest("Not able to register");
 
         }
-        
+
+        [Route("Validate")]
+        [HttpPost]
+        public async Task<ActionResult<UserDTO>> Validate([FromBody] UserDTO user)
+        {
+            var userDTO = _services.Validate(user);
+            if (userDTO != null)
+                return Ok(userDTO);
+            return BadRequest("Not able to register");
+
+        }
 
 
-       
+
+
+
     }
 }

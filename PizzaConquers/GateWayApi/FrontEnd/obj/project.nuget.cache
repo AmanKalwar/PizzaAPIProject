@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TUUhsyK/LXwPssmOU1zCFYdWYR8P7ZPyKtdm31jKP7t/LArQg6fYqzJXIs18XiZu0dmiTRMoSrSxb1ybmKxY1w==",
+  "dgSpecHash": "yYCf2CjpIqZe7TKnED0rmpP5V4GDrtaGl8HHLwIj+v9s8NZtqnfcGo+Wi6Cbz8KyOM39jRqGtypijmES3Kie1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\FrontEnd\\FrontEnd.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\GateWayApi\\FrontEnd\\FrontEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

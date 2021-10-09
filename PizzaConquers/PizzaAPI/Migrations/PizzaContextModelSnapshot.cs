@@ -53,7 +53,7 @@ namespace PizzaAPI.Migrations
                             ID = 1001,
                             Crust = "Fresh Pan Pizza",
                             Description = "Peppy Paneer Cheese Burst Topped with Extra Cheese",
-                            Images = "/Images/pizza1.jfif",
+                            Images = "/Images/pizza-1.jpg",
                             Name = "Veg Loaded",
                             Price = 199.0,
                             Speciality = "with Pepsi"
@@ -63,7 +63,7 @@ namespace PizzaAPI.Migrations
                             ID = 1002,
                             Crust = "Fresh Pan Pizza",
                             Description = "Peppy Paneer Cheese Burst Topped with Extra Cheese",
-                            Images = "/Images/pizza2.jfif",
+                            Images = "/Images/pizza-2.jpg",
                             Name = "Peppy Paneer Pizza",
                             Price = 299.0,
                             Speciality = "with extra toppings"
@@ -73,7 +73,7 @@ namespace PizzaAPI.Migrations
                             ID = 1003,
                             Crust = "Fresh Pan Pizza",
                             Description = "Mashroon Topped",
-                            Images = "/Images/pizza3.jfif",
+                            Images = "/Images/pizza-3.jpg",
                             Name = "Peper Chicken",
                             Price = 199.0,
                             Speciality = "with Pepsi"
@@ -83,7 +83,7 @@ namespace PizzaAPI.Migrations
                             ID = 1004,
                             Crust = "Fresh Pan Pizza",
                             Description = "Peppy Paneer Cheese Burst Topped with Extra Cheese",
-                            Images = "/Images/pizza4.jfif",
+                            Images = "/Images/pizza-4.jpg",
                             Name = "Non Veg Loaded",
                             Price = 299.0,
                             Speciality = "with Pepsi"

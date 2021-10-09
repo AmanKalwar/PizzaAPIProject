@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\Desktop\\PizzaAPIProject\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj": {}
+    "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\Desktop\\PizzaAPIProject\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj": {
+    "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\PizzaAPIProject\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
         "projectName": "PizzaUsers",
-        "projectPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPIProject\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPIProject\\PizzaConquers\\PizzaUsers\\PizzaUsers\\obj\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

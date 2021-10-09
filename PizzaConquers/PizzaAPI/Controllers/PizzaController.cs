@@ -22,7 +22,7 @@ namespace PizzaAPI.Controllers
         }
         // GET: api/<PizzaController>
         [HttpGet]
-        public  ICollection<Pizza> Get()
+        public IEnumerable<Pizza> Get()
         {
             if (_pizzaService.GetAll() != null) {
                   

@@ -14,6 +14,7 @@ namespace PizzaUsers.Models
         public string Address { get; set; }
         public string PizzaName { get; set; }
         public double Price { get; set; }
+        public DateTime date { get; set; }
         public int Qty { get; set; }
     }
 }

@@ -20,6 +20,24 @@ namespace PizzaUsers.services
 
         }
 
+        public UserDTO Validate(UserDTO userDTO)
+        {
+            UserDTO userDTO1 = null;
+            try
+            {
+                if(_context.users.Where(e=>e.Email==userDTO.Email).Any())
+                {
+                    
+                   var user = _context.users.FirstOrDefault(e => e.Email == userDTO.Email);
+                    userDTO1 = new UserDTO() {Email=user.Email };
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return userDTO1;
+        }
+
         public UserDTO Register(UserDTO userDTO)
         {
             try
@@ -65,6 +83,9 @@ namespace PizzaUsers.services
                             return null;
                     }
                     userDTO.jwtToken = _tokenServices.CreateToken(userDTO);
+                    userDTO.Name = myUser.Name;
+                    userDTO.UserId = myUser.UserId;
+                    userDTO.Address = myUser.Address;
                     userDTO.Password = "";
                     return userDTO;
                 }

@@ -25,8 +25,8 @@ namespace PizzaUsers.Controllers
         // GET: api/<PizzaController>
         [Route("GetPizza")]
         [HttpGet]
-       
-        public ICollection<PizzaDTO> GetPizza()
+
+        public IEnumerable<PizzaDTO> GetPizza()
         {
             if (_pservice.GetAll() != null)
             {
