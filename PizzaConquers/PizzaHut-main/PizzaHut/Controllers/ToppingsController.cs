@@ -227,7 +227,7 @@ namespace PizzaHut.Controllers
                 }
 
             }
-            else
+            else if(PizzaList.ContainsKey(ID))
             {
                 if (PizzaList[ID].Qty == 1)
                 {
@@ -246,14 +246,22 @@ namespace PizzaHut.Controllers
                     return RedirectToAction("Details", "Toppings");
                 }
             }
+            else
+            {
+                return RedirectToAction("Index", "Pizza");
+            }
         }
         public IActionResult Add(string ID)
         {
-            PizzaList = PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
-            PizzaList[ID].Qty += 1;
-            HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
-            TempData["Added"] = "Successfully Added";
-            return RedirectToAction("Details", "Toppings");
+            PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
+            if(PizzaList.ContainsKey(ID))
+            {
+                PizzaList[ID].Qty += 1;
+                HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
+                TempData["Added"] = "Successfully Added";
+                return RedirectToAction("Details", "Toppings");
+            }
+           return RedirectToAction("Index", "Pizza");
         }
     }
 }

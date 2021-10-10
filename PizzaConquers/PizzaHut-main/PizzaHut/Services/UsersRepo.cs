@@ -17,40 +17,56 @@ namespace PizzaHut.Services
         public UsersDTO Validate(UsersDTO users)
         {
             UsersDTO user = null;
-            using(var client= new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:26514/api/");
-                var postdata = client.PostAsJsonAsync<UsersDTO>("User/Login",users);
-                postdata.Wait();
-                if(postdata.Result.IsSuccessStatusCode)
+                
+                using (var client = new HttpClient())
                 {
-                    var data= postdata.Result.Content.ReadFromJsonAsync<UsersDTO>();
+                    client.BaseAddress = new Uri("http://localhost:26514/api/");
+                    var postdata = client.PostAsJsonAsync<UsersDTO>("User/Login", users);
+                    postdata.Wait();
+                    if (postdata.Result.IsSuccessStatusCode)
+                    {
+                        var data = postdata.Result.Content.ReadFromJsonAsync<UsersDTO>();
 
-                     data.Wait();
+                        data.Wait();
 
-                    user = data.Result;
+                        user = data.Result;
+                    }
                 }
-            }        
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+                 
                 return user;
         }
 
         public UsersDTO Validate2(UsersDTO users)
         {
             UsersDTO user = null;
-            using (var client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("http://localhost:26514/api/");
-                var postdata = client.PostAsJsonAsync<UsersDTO>("User/Validate", users);
-                postdata.Wait();
-                if (postdata.Result.IsSuccessStatusCode)
+               
+                using (var client = new HttpClient())
                 {
-                    var data = postdata.Result.Content.ReadFromJsonAsync<UsersDTO>();
+                    client.BaseAddress = new Uri("http://localhost:26514/api/");
+                    var postdata = client.PostAsJsonAsync<UsersDTO>("User/Validate", users);
+                    postdata.Wait();
+                    if (postdata.Result.IsSuccessStatusCode)
+                    {
+                        var data = postdata.Result.Content.ReadFromJsonAsync<UsersDTO>();
 
-                    data.Wait();
+                        data.Wait();
 
-                    user = data.Result;
+                        user = data.Result;
+                    }
                 }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
+
             return user;
         }
         public ICollection<UsersDTO> GetAll()
