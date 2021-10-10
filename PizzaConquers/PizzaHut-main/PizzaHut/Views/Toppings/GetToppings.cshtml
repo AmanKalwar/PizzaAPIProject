@@ -2,8 +2,7 @@
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+@{}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
@@ -49,8 +48,9 @@
 
 </head>
 <body>
-    
-    @if (ViewBag.pizza != null)
+    @if (Model.Toppings!=null)
+    {
+    @if (ViewBag.pizza != null && TempData.Peek("Token") != null)
     {
         <div class="container">
             <div class="row">
@@ -91,5 +91,10 @@
             window.location.href = "/Users";
         </script>
     }
+  }
+ else
+ {
+    <h1 style="color:Red"> Some Problem Try Again Later</h1>
+ }
 </body>
 </html>

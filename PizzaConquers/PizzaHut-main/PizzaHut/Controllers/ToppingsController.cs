@@ -46,6 +46,7 @@ namespace PizzaHut.Controllers
             ViewBag.pizza = pizza;
             HttpContext.Session.SetString("ID", ID.ToString());
             Check checks = new Check();
+
             checks.Toppings = _toprepo.GetAll(TempData.Peek("Token").ToString());
             return View(checks);
         }

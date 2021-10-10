@@ -51,77 +51,79 @@
 
 </head>
 <body>
-   @if (TempData["Empty"] == null)
-   {
+
+        @if (TempData["Empty"] == null && TempData.Peek("Token") != null)
+        {
 
 
-    <br />
-    <br />
-    <br />
-    <h3 style="color: #1efffe">HIIIII!  @TempData.Peek("UserName") </h3>
-    <p style="color: #1efffe">This is your order summery----))</p>
+            <br />
+            <br />
+            <br />
+            <h3 style="color: #1efffe">HIIIII!  @TempData.Peek("UserName") </h3>
+            <p style="color: #1efffe">This is your order summery----))</p>
 
-    <h5 style="color: #1efffe">The Pizza you are selected are:</h5>
-    <p style="color: #1efffe">_____________________________________________________________</p>
-    @foreach (var item in Pizza)
-    {
+            <h5 style="color: #1efffe">The Pizza you are selected are:</h5>
+            <p style="color: #1efffe">_____________________________________________________________</p>
+            @foreach (var item in Pizza)
+            {
 
-        <p style="color: #1efffe">
-            @item.Name
-        </p>
-    }
-    <p style="color: #1efffe">_____________________________________________________________</p>
-
-    <h6 style="color: #1efffe">
-        Total number of Items you selected:  @count
-        <br /><br />
-        Total Price :                        @sum
-        <br /><br />
-        Delivery Address:                    @TempData.Peek("Address")
-
-    </h6>
-          <div class="form-group">
-              <a href="@Url.Action("Index", "Pizza")"><button class="btn">Thank You</button></a>
-              <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
-              
-          </div>
-   }
-   else
-      {
-         <script>
-             $(document).ready(function () {
-                 $("#myModal").modal();
-             });
-               
-         </script>
-                                                <div class="modal" id="myModal">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-
-                                                            <div class="modal-header">
-                                                                <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-
-
-                                                            <div class="modal-body">
-                                                              No Items in the Cart
-                                                            </div>
-
-
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div style="display:flex;padding:20px;justify-content:center;margin:70px auto">
-                                                    <a href="@Url.Action("Index", "Pizza")"><button class="btn">Go Back</button></a>
-                                                    <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
-                                                </div>
-                                                 
+                <p style="color: #1efffe">
+                    @item.Name
+                </p>
             }
+            <p style="color: #1efffe">_____________________________________________________________</p>
 
+            <h6 style="color: #1efffe">
+                Total number of Items you selected:  @count
+                <br /><br />
+                Total Price :                        @sum
+                <br /><br />
+                Delivery Address:                    @TempData.Peek("Address")
+
+            </h6>
+            <div class="form-group">
+                <a href="@Url.Action("Index", "Pizza")"><button class="btn">Thank You</button></a>
+                <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
+
+            </div>
+        }
+        else
+        {
+            <script>
+                $(document).ready(function () {
+                    $("#myModal").modal();
+                });
+
+            </script>
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+
+                        <div class="modal-body">
+                            No Items in the Cart
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="display:flex;padding:20px;justify-content:center;margin:70px auto">
+                <a href="@Url.Action("Index", "Pizza")"><button class="btn">Go Back</button></a>
+                <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
+            </div>
+
+        }
+    }
+    
 </body>
     </html>
