@@ -35,21 +35,35 @@ namespace PizzaHut.Controllers
         }
         public IActionResult Index()
         {
+            PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
+            
             int count = 0;
+           
             double sum = 0;
-            PlaceOrders();
-            ViewData["Orders"] = Orders;
-            foreach (var item in Orders)
+            if(PizzaList.Count==0)
             {
-                Pizza1.Add(_Prepo.Get(item.PizzaID, TempData.Peek("Token").ToString()));
-                sum = sum + item.Price;
-                count += item.Qty;
+                TempData["Empty"] = "Please place the order";
+                return View();
             }
-            ViewData["Users"] = user.Address;
-            ViewData["count"] = count;
-            ViewData["Pizza"] = Pizza1;
-            ViewData["Sum"] = sum;
-            return View();
+            else
+            {
+                PlaceOrders();
+                ViewData["Orders"] = Orders;
+                foreach (var item in Orders)
+                {
+                    Pizza1.Add(_Prepo.Get(item.PizzaID, TempData.Peek("Token").ToString()));
+                    sum = sum + item.Price;
+                    count += item.Qty;
+                }
+                ViewData["Users"] = user.Address;
+                ViewData["count"] = count;
+                ViewData["Pizza"] = Pizza1;
+                ViewData["Sum"] = sum;
+                TempData["Empty"] = null;
+                return View();
+
+            }
+           
         }
         public void PlaceOrders()
         {

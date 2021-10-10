@@ -11,8 +11,12 @@
 }
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <style>
-        
+
         .card #body {
             overflow: hidden;
         }
@@ -24,9 +28,10 @@
         }
 
         body {
-           background-image: url('/images/summery1.jpg');
-           background-size:cover;
+            background-image: url('/images/summery1.jpg');
+            background-size: cover;
         }
+
         .btn {
             width: 200px;
             border-radius: 20px;
@@ -36,17 +41,20 @@
             transition: 0.5s ease-in-out;
             margin-left: 50px;
         }
+
             .btn:hover {
                 color: white;
                 box-shadow: 0 0 20px 0 #1efffe;
                 background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
             }
-
     </style>
 
 </head>
 <body>
-   
+   @if (TempData["Empty"] == null)
+   {
+
+
     <br />
     <br />
     <br />
@@ -72,12 +80,48 @@
         Delivery Address:                    @TempData.Peek("Address")
 
     </h6>
-    <br /><br />
           <div class="form-group">
-              <a href="@Url.Action("Index","Pizza")"><button class="btn">Thank You</button></a>
-              <a href="@Url.Action("Index","Users")"><button class="btn">Log Out</button></a>
-              <
+              <a href="@Url.Action("Index", "Pizza")"><button class="btn">Thank You</button></a>
+              <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
+              
           </div>
+   }
+   else
+      {
+         <script>
+             $(document).ready(function () {
+                 $("#myModal").modal();
+             });
+               
+         </script>
+                                                <div class="modal" id="myModal">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <div class="modal-header">
+                                                                <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            </div>
+
+
+                                                            <div class="modal-body">
+                                                              No Items in the Cart
+                                                            </div>
+
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="display:flex;padding:20px;justify-content:center;margin:70px auto">
+                                                    <a href="@Url.Action("Index", "Pizza")"><button class="btn">Go Back</button></a>
+                                                    <a href="@Url.Action("Index", "Users")"><button class="btn">Log Out</button></a>
+                                                </div>
+                                                 
+            }
 
 </body>
     </html>

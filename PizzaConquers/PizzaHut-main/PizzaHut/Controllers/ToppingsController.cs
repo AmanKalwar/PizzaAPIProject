@@ -215,12 +215,14 @@ namespace PizzaHut.Controllers
                     ToppingsList.Remove(ID);
                     HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
                     HttpContext.Session.SetString("Toppings", JsonConvert.SerializeObject(ToppingsList));
+                    TempData["deleted"] = "Deleted Successfully";
                     return RedirectToAction("Details", "Toppings");
                 }
                 else
                 {
                     PizzaList[ID].Qty -= 1;
                     HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
+                    TempData["deleted"] = "Deleted Successfully";
                     return RedirectToAction("Details", "Toppings");
                 }
 
@@ -232,6 +234,7 @@ namespace PizzaHut.Controllers
                     PizzaList.Remove(ID);
                     HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
                     HttpContext.Session.SetString("Toppings", JsonConvert.SerializeObject(ToppingsList));
+                    TempData["deleted"] = "Deleted Successfully";
                     return RedirectToAction("Details", "Toppings");
                 }
                 else
@@ -239,6 +242,7 @@ namespace PizzaHut.Controllers
                     PizzaList[ID].Qty -= 1;
                     HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
                     HttpContext.Session.SetString("Toppings", JsonConvert.SerializeObject(ToppingsList));
+                    TempData["deleted"] = "Deleted Successfully";
                     return RedirectToAction("Details", "Toppings");
                 }
             }
@@ -248,6 +252,7 @@ namespace PizzaHut.Controllers
             PizzaList = PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
             PizzaList[ID].Qty += 1;
             HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
+            TempData["Added"] = "Successfully Added";
             return RedirectToAction("Details", "Toppings");
         }
     }
