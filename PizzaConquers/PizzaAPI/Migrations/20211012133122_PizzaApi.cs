@@ -2,7 +2,7 @@
 
 namespace PizzaAPI.Migrations
 {
-    public partial class init : Migration
+    public partial class PizzaApi : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

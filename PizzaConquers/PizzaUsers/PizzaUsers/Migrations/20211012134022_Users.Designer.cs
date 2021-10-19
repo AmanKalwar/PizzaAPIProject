@@ -10,7 +10,7 @@ using PizzaUsers.Models;
 namespace PizzaUsers.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20211006162257_Users")]
+    [Migration("20211012134022_Users")]
     partial class Users
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

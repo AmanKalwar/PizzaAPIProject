@@ -3,8 +3,9 @@
 *@
 @{
     var DictPizza = (Dictionary<string, Cart>)ViewData["Pizza"];
-    var DictToppings = (Dictionary<string, ToppingsDTO>)ViewData["Toppings"];
+    var DictToppings = (Dictionary<string, List<ToppingsDTO>>)ViewData["Toppings"];
     var total = 0;
+    double sum = 0;
 
 }
 
@@ -68,69 +69,100 @@
 
     @if (TempData["Added"] != null)
     {
-<script>
-    $(document).ready(function () {
-        $("#myModal").modal();
-    });
+        <script>
+            $(document).ready(function () {
+                $("#myModal").modal();
+            });
 
 
-</script>
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
+        </script>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                            <div class="modal-header">
-                                <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            </div>
-
-
-                            <div class="modal-body">
-                                Added to Cart Successfully
-                            </div>
-
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
-
-                        </div>
+                    <div class="modal-header">
+                        <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                </div> }
-     @if(TempData["deleted"] != null)
+
+
+                    <div class="modal-body">
+                        Added to Cart Successfully
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>}
+    @if (TempData["deleted"] != null)
     {
-                                <script>
-                                    $(document).ready(function () {
-                                        $("#myModal").modal();
-                                    });
+        <script>
+            $(document).ready(function () {
+                $("#myModal").modal();
+            });
 
 
-                                </script>
-                                                <div class="modal" id="myModal">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
+        </script>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
 
-                                                            <div class="modal-header">
-                                                                <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
-                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                            </div>
-
-
-                                                            <div class="modal-body">
-                                                                Deleted from Cart Successfully
-                                                            </div>
+                    <div class="modal-header">
+                        <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
 
 
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
+                    <div class="modal-body">
+                        Deleted from Cart Successfully
+                    </div>
 
 
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (TempData["Error"] != null)
+    {
+        <script>
+            $(document).ready(function () {
+                $("#myModal").modal();
+            });
+
+
+        </script>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <img src="\images\Pizzahutlogo.JPG" alt="image missing" height="50" width="50"><h4 class="modal-title">&nbsp;&nbsp; Pizza Hut </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+
+                    <div class="modal-body">
+                        Something Went Wrong Please try After Sometime
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
     <br>
     <br />
     <br />
@@ -149,39 +181,61 @@
             </tr>
         </thead>
         <tbody>
-
             @foreach (var item in DictPizza.Keys)
             {
-<tr>
-    <td>
-        @DictPizza[item].Pizza.ID
-    </td>
-    <td>
-        @DictPizza[item].Pizza.Name
-    </td>
-    @if (DictToppings != null)
-    {
-        if (DictToppings.ContainsKey(item))
-        {
-<td>@DictToppings[item].ID</td>
-                        <td>@DictToppings[item].Name</td>
-                                                <td>@((@Convert.ToInt32(DictPizza[item].Pizza.Price)+@Convert.ToInt32(DictToppings[item].Price))*Convert.ToInt32(DictPizza[item].Qty))</td> //@(total+=(@Convert.ToInt32(DictPizza[item].Pizza.Price) + @Convert.ToInt32(DictToppings[item].Price)) * Convert.ToInt32(DictPizza[item].Qty));
-                                                                    }
-                                                                    else
-                                                                    {
-                                                <td colspan="3"> - </td>
-                                                                        <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td> //@(total += (@Convert.ToInt32(DictPizza[item].Pizza.Price) * @Convert.ToInt32(DictPizza[item].Qty));
-                                                                                            }
+                <tr>
+                    <td>
+                        @DictPizza[item].Pizza.ID
+                    </td>
+                    <td>
+                        @DictPizza[item].Pizza.Name
+                    </td>
+                    @if (DictToppings != null)
+                    {
+                        if (DictToppings.ContainsKey(item))
+                        {
+                            <td>
+                                @foreach (var items in DictToppings[item])
+                                {
+                                    @items.ID;
+                                    <br />
+                                }
 
-                                                                                        }
-                                                                                        else
-                                                                                        {
-                                                                        <td colspan="3"> - </td>
-                                                                                            <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>}
-    <td>@DictPizza[item].Qty</td>
-    <td><a href="@Url.Action("Delete","Toppings",new {ID=@item})"><button class="btn" id="btn1" style="width:50px">-</button></a></td>
-    <td><a href="@Url.Action("Add","Toppings",new {ID=@item})"><button class="btn" id="btn2" style="width:50px">+</button></a></td>
-</tr>}
+                            </td>
+                            <td>
+                                @foreach (var items in DictToppings[item])
+                                {
+                                    @items.Name;
+                                    <br />
+                                }
+                            </td>
+                            foreach (var items in DictToppings[item])
+                            {
+                                sum += items.Price;
+                            }
+                            <td>@((@Convert.ToInt32(DictPizza[item].Pizza.Price)+@Convert.ToInt32(sum))*Convert.ToInt32(DictPizza[item].Qty))</td>
+                            sum = 0;
+
+                        }
+                        else
+                        {
+                            <td colspan="3"> - </td>
+                            <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
+                            //@(total += (@Convert.ToInt32(DictPizza[item].Pizza.Price) * @Convert.ToInt32(DictPizza[item].Qty));
+                        }
+
+                    }
+                    else
+                    {
+                        <td colspan="3"> - </td>
+                        <td>@(@Convert.ToInt32(DictPizza[item].Pizza.Price)*@Convert.ToInt32(DictPizza[item].Qty))</td>
+                    }
+                    <td>@DictPizza[item].Qty</td>
+                    <td><a href="@Url.Action("Delete","Toppings",new {ID=@item})"><button class="btn btn-default" style="width:50px;">-</button></a></td>
+                    <td><a href="@Url.Action("Add","Toppings",new {ID=@item})"><button class="btn btn-default" style="width:50px;">+</button></a></td>
+                </tr>
+
+            }
             <tr>
                 <td colspan="3">Grand Total</td>
                 <td colspan="5" style="text-align:right">

@@ -16,15 +16,15 @@ namespace PizzaHut.Controllers
         UsersDTO user = new UsersDTO();
         List<OrdersDTO> Orders = new List<OrdersDTO>();
         List<PizzaDTO> Pizza1 = new List<PizzaDTO>();
-      
+
         private readonly ILogger<OrdersController> _logger;
         private readonly OrderDetailRepo _repoo;
         private readonly OrderRepo _repo;
         private readonly PizzaRepo _Prepo;
         public Dictionary<string, Cart> PizzaList;
-        public Dictionary<string, ToppingsDTO> ToppingsList;
+        public Dictionary<string, List<ToppingsDTO>> ToppingsList;
 
-     
+
 
         public OrdersController(ILogger<OrdersController> logger, OrderRepo repo, PizzaRepo Prepo, OrderDetailRepo repoo)
         {
@@ -36,18 +36,26 @@ namespace PizzaHut.Controllers
         public IActionResult Index()
         {
             PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
-            
+
             int count = 0;
-           
+
             double sum = 0;
-            if(PizzaList.Count==0)
+            if (PizzaList.Count == 0)
             {
                 TempData["Empty"] = "Please place the order";
                 return View();
             }
+           
             else
             {
                 PlaceOrders();
+                if (Orders.Count == 0)
+                {
+                    TempData["Added"] = null;
+                    TempData["deleted"] = null;
+                    TempData["Error"] = "Some Error try after sometime";
+                    return RedirectToAction("Details", "Toppings");
+                }
                 ViewData["Orders"] = Orders;
                 foreach (var item in Orders)
                 {
@@ -63,14 +71,14 @@ namespace PizzaHut.Controllers
                 return View();
 
             }
-           
+
         }
         public void PlaceOrders()
         {
             OrdersDTO order;
             PizzaList = JsonConvert.DeserializeObject<Dictionary<string, Cart>>(HttpContext.Session.GetString("Pizza"));
             if (HttpContext.Session.GetString("Toppings") != null)
-                ToppingsList = JsonConvert.DeserializeObject<Dictionary<string, ToppingsDTO>>(HttpContext.Session.GetString("Toppings"));
+                ToppingsList = JsonConvert.DeserializeObject<Dictionary<string, List<ToppingsDTO>>>(HttpContext.Session.GetString("Toppings"));
             else
                 ToppingsList = null;
 
@@ -80,47 +88,59 @@ namespace PizzaHut.Controllers
 
                 if (ToppingsList != null && ToppingsList.ContainsKey(item))
                 {
-                    subTotal += (PizzaList[item].Pizza.Price + ToppingsList[item].Price) * PizzaList[item].Qty;
+                    double sum = 0;
+                    foreach (var items in ToppingsList[item])
+                    {
+                        sum += items.Price;
+                    }
+                    subTotal += (PizzaList[item].Pizza.Price + sum) * PizzaList[item].Qty;
                     order = new OrdersDTO() { Qty = PizzaList[item].Qty, PizzaID = PizzaList[item].Pizza.ID, Price = subTotal, date = DateTime.Now, CustomerID = Convert.ToInt32(TempData.Peek("CustID")), PizzaName = PizzaList[item].Pizza.Name, Address = TempData.Peek("Address").ToString() };
-                
+
                     OrdersDTO orders = _repo.Add(order, TempData.Peek("Token").ToString());
 
                     if (orders != null)
                     {
                         Orders.Add(orders);
-                        OrderDetailsDTO details = new OrderDetailsDTO() { ToppingsID = ToppingsList[item].ID, OrderID = orders.OrderID ,ToppingsName=ToppingsList[item].Name};
-                        if (_repoo.Add(details, TempData.Peek("Token").ToString()) != null)
+                        foreach (var items in ToppingsList[item])
                         {
-                            _logger.LogInformation("Order Successfull");
+                            OrderDetailsDTO details = new OrderDetailsDTO() { ToppingsID = items.ID, OrderID = orders.OrderID, ToppingsName = items.Name, Date = DateTime.Today };
+                            if (_repoo.Add(details, TempData.Peek("Token").ToString()) != null)
+                            {
+                                _logger.LogInformation("Order Successfull");
 
+                            }
+                            else
+                            {
+                                _logger.LogInformation("Null Returned");
+                            }
                         }
                     }
                     else
                     {
-                        _logger.LogInformation("Null Returned");
+                        return;
                     }
                 }
                 else
                 {
                     order = new OrdersDTO() { Qty = PizzaList[item].Qty, PizzaID = PizzaList[item].Pizza.ID, Price = (PizzaList[item].Pizza.Price) * PizzaList[item].Qty, date = DateTime.Now, CustomerID = Convert.ToInt32(TempData.Peek("CustID")), PizzaName = PizzaList[item].Pizza.Name, Address = TempData.Peek("Address").ToString() };
-                    OrdersDTO orders = _repo.Add(order, TempData.Peek("Token").ToString());
-                    if (orders != null)
+                    OrdersDTO orderss = _repo.Add(order, TempData.Peek("Token").ToString());
+                    if (orderss != null)
                     {
-                        Orders.Add(orders);
+                        Orders.Add(orderss);
                         _logger.LogInformation("Order placed Successfully");
                     }
 
                 }
-            }
-            PizzaList.Clear();
-            HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
-            if (ToppingsList != null)
-            {
-                ToppingsList.Clear();
-                HttpContext.Session.SetString("Toppings", JsonConvert.SerializeObject(ToppingsList));
-            }
+                }
+                PizzaList.Clear();
+                HttpContext.Session.SetString("Pizza", JsonConvert.SerializeObject(PizzaList));
+                if (ToppingsList != null)
+                {
+                    ToppingsList.Clear();
+                    HttpContext.Session.SetString("Toppings", JsonConvert.SerializeObject(ToppingsList));
+                }
 
 
+            }
         }
     }
-}

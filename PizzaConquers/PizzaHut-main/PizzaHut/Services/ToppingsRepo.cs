@@ -10,7 +10,7 @@ namespace PizzaHut.Services
 {
     public class ToppingsRepo
     {
-        public ICollection<ToppingsDTO> GetAll(string Token)
+        public IEnumerable<ToppingsDTO> GetAll(string Token)
         {
             try
             {

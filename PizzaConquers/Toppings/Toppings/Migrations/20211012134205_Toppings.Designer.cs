@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OrderDetails.Models;
+using Toppings.Data;
 
-namespace OrderDetails.Migrations
+namespace Toppings.Migrations
 {
-    [DbContext(typeof(OrdersContext))]
-    [Migration("20211009102935_init")]
-    partial class init
+    [DbContext(typeof(ToppingDbContext))]
+    [Migration("20211012134205_Toppings")]
+    partial class Toppings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,25 +20,22 @@ namespace OrderDetails.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("OrderDetails.Models.OrderDetail", b =>
+            modelBuilder.Entity("Toppings.Data.Models.Topping", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ToppingsID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ToppingsName")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.HasKey("ID");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("Toppings");
                 });
 #pragma warning restore 612, 618
         }

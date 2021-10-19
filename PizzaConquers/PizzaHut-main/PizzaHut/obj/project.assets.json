@@ -7145,11 +7145,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaHut-main\\PizzaHut\\PizzaHut.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\PizzaApi2\\PizzaConquers\\PizzaHut-main\\PizzaHut\\PizzaHut.csproj",
       "projectName": "PizzaHut",
-      "projectPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaHut-main\\PizzaHut\\PizzaHut.csproj",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\PizzaApi2\\PizzaConquers\\PizzaHut-main\\PizzaHut\\PizzaHut.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaHut-main\\PizzaHut\\obj\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\PizzaApi2\\PizzaConquers\\PizzaHut-main\\PizzaHut\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

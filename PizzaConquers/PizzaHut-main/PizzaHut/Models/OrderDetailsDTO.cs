@@ -14,6 +14,7 @@ namespace PizzaHut.Models
 
         public int ToppingsID { get; set; }
         public string ToppingsName { get; set; }
+        public DateTime Date { get; set; }
 
     }
 }

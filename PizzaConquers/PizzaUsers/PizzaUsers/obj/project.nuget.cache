@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2TGS9ONxrn/zrJVigG0eESCn7JteVipKX1up069KVO1fZLFln28lsGJNJP335RdJqaLWRPQkHrmjUsE7MyrV5w==",
+  "dgSpecHash": "dqjq6g+GWiau4eXCv4a1Ha61XbfXZ/XIYFOvVEXpWCRUMEC5Pc+UuWlXt8p+jz5RCTlbzVHrowl7ui955OzSXQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\PizzaAPI\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\Desktop\\PizzaApi2\\PizzaConquers\\PizzaUsers\\PizzaUsers\\PizzaUsers.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.10\\microsoft.aspnetcore.authentication.jwtbearer.5.0.10.nupkg.sha512",

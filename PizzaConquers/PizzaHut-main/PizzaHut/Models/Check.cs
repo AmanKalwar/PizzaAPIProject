@@ -8,7 +8,9 @@ namespace PizzaHut.Models
 {
     public class Check
     {
-        public ICollection<ToppingsDTO> Toppings {get; set; }
-        public int checks { get; set; }
+        public bool IsSelected { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public double price { get; set; }
     }
 }

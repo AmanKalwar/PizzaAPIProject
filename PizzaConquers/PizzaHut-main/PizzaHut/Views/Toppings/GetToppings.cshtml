@@ -1,4 +1,4 @@
-﻿@model PizzaHut.Models.Check
+﻿@model List<PizzaHut.Models.Check>
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
@@ -48,7 +48,7 @@
 
 </head>
 <body>
-    @if (Model.Toppings!=null)
+    @if (Model!=null)
     {
     @if (ViewBag.pizza != null && TempData.Peek("Token") != null)
     {
@@ -65,15 +65,12 @@
                     <form asp-controller="Toppings" asp-action="GetToppings" method="post" style="margin-top:70px; ">
                         <div class="form-check">
                             <h3 style="color: #1efffe">Please select the Toppings </h3>
-                            @foreach (var item in Model.Toppings)
+                            @for (int i = 0; i < Model.Count; i++)
                             {
-                                <br>
-
-
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    <h5 style="color: #1efffe"> @Html.RadioButtonFor(m => m.checks, @item.ID) @item.Name  <b> $ @item.Price </b></h5>
-                                </label>
-                            }
+                             <p style="color:white;">@Html.CheckBoxFor(e => e[i].IsSelected) @Model[i].Name &nbsp;&nbsp; $@Model[i].price</p> <br />
+                             @Html.HiddenFor(e => e[i].ID);
+                             @Html.HiddenFor(e => e[i].Name);
+                           }
                         </div>
                         <br />
                         <div class="form-group">
